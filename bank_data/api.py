@@ -41,5 +41,7 @@ def branch(request):
                     'state': y.state
                 }
             )
+    else:
+        data = {}
 
     return Response({"data": data})
