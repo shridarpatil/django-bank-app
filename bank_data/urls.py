@@ -1,4 +1,4 @@
-"""bank_data URL Configuration
+"""bank_data URL Configuration.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -16,6 +16,25 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from django.conf.urls import url
+from .api import bank, branch
+
+
+@api_view(['GET', 'POST'])
+def hello_world(request):
+    """Pass."""
+    if request.method == 'POST':
+        return Response({"message": "Got some data!", "data": request.data})
+    else:
+        return Response({'key': 'value'})
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url('hello/', hello_world),
+    url('bank/', bank),
+    url('branch/', branch),
 ]
