@@ -1,18 +1,8 @@
 """Bank."""
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from bank_data.models import Bank, Branch
+from bank_data.models import Branch
 from django.core.exceptions import ObjectDoesNotExist
-
-
-@api_view(["GET"])
-def bank(request):
-    """Bank."""
-    # Bank(id=1, name='IDFC').save()
-    id = request.GET.get('id', "ddd")
-    x = Bank.objects.get(id=id)
-    data = {'name': x.name}
-    return Response({"data": data})
 
 
 @api_view(["GET"])

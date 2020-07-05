@@ -20,7 +20,7 @@ from django.urls import path
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.conf.urls import url
-from .api import bank, branch
+from bank_data.api import branch
 
 
 @api_view(['GET', 'POST'])
@@ -34,7 +34,5 @@ def hello_world(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('hello/', hello_world),
-    url('bank/', bank),
     url('branch/', branch),
 ]
